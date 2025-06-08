@@ -272,3 +272,13 @@ export const getLocalStorage = ()=>{
   return {employees, admin}
 
 }
+
+export const seedLocalStorage = () => {
+  if (!localStorage.getItem('employees') || !localStorage.getItem('admin')) {
+    localStorage.setItem('employees', JSON.stringify(employees));
+    localStorage.setItem('admin', JSON.stringify(admin));
+    console.log('LocalStorage seeded with initial employees and admin data.');
+  } else {
+    console.log('LocalStorage already initialized, skipping seed.');
+  }
+}

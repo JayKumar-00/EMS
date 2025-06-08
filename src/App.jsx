@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useState } from 'react'
 import Login from './components/Auth/Login'
 import EmployeeDashboard from './components/Dashboard/EmployeeDashboard'
 import Admindashboard from './components/Dashboard/Admindashboard'
-import { getLocalStorage, setLocalStorage } from './utils/LocalStorage'
+import { getLocalStorage, seedLocalStorage, setLocalStorage } from './utils/LocalStorage'
 import { AuthContext } from './context/AuthProvider'
 
 function App() {
@@ -10,6 +10,10 @@ function App() {
   const [user, setUser] = useState(null)
   const [loggedInUserData, setLoggedInUserData] = useState(null)
   const [userData, setUserData] = useContext(AuthContext)
+
+  useEffect(() => {
+    seedLocalStorage()
+  }, [])
 
   useEffect(()=>{
     const loggedInUser = localStorage.getItem('loggedInUser')
